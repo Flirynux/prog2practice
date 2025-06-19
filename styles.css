@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #ffa500;
+    height: 5%;
+}
+
+form {
+    background-color: #dddddd;
+    margin: 5%;
+    width: 60%;
+    min-height: 20%;
+    padding: 2%;
+}
+
+#content {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#next {
+    margin: 1rem;
+    margin-left: 8rem;
+    background-color: #ffa500;
+    border: 0;
+    padding: 6px;
+    font-size: larger;
+    
+}
+#next:active{
+    background-color: #c78100;
+}
