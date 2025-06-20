@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     nextQuestion();
 });
 
-nextQuestion();
+let correct = 0;
+let allPoints = 0;
 
 function nextQuestion(){
     q = questions[Math.floor(Math.random()*questions.length)];
@@ -40,15 +41,26 @@ function eval(){
     for (let i = 0; i < answers.length; i++) {
         if(answers[i].value != 0){
             const ans = answers[i].value == 1;
-            
+            allPoints +=1;
             if(ans === key[i]){
                 points +=1;
+                correct +=1;
             }else{
                 points -=0.5;
+                correct -=0.5;
             }
         }
         
     }
-    alert( points +"/"+answers.length);
+    let res = points +"/"+answers.length+"\n";
+    res += "Helyes válaszok:\n"
+    for (let i = 0; i < key.length; i++) {
+        if(key[i]){
+            res += q.answers[i]+"\n\n";
+        }
+        
+    }
+    res += "Összesített: " + correct + "/" + allPoints + " Pontosság: " +((correct/allPoints)*100).toFixed(2)+"%";
+    alert(res);
     nextQuestion();
 }
