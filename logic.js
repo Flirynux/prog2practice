@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () { 
-    let q = questions[Math.floor(Math.random()*questions.length)];
     nextQuestion();
 });
 
 let correct = 0;
 let allPoints = 0;
+let q = null;
 
 function nextQuestion(){
-    q = questions[Math.floor(Math.random()*questions.length)];
+    let id = Math.floor(Math.random()*questions.length);
+    q = questions[id];
+    questions.splice(id,1);
     const main = document.getElementById("main");
     main.innerHTML = "<td style=\"text-align: center; width: 15%;\">H / - / I</td><td id=\"question\" style=\"font-size: larger; font-weight: bolder;\">"+q.question+"</td>";
     const question = document.createElement("tr");

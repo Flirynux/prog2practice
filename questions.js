@@ -45,6 +45,23 @@ const questions = [
         ]
     },
     {
+        "question" : "Mit nem változtathatunk meg, ha egy ősosztálybol örökölt metódust felüldefiniálunk?",
+        "answers" : [
+            "A metódus nevét",
+            "A metódus láthatóságát",
+            "Azt, hogy a metódus const",
+            "Visszatérés típusát",
+            "Paraméterek számát és típusát"
+        ],
+        "key" : [
+            true,
+            false,
+            true,
+            false,
+            true
+        ]
+    },
+    {
         "question" : "Mi jellemzi a C++ string osztalyt?",
         "answers" : [
             "Felüldefiniálta például a + vagy az = operátorokat",
@@ -113,10 +130,44 @@ const questions = [
             "Az osztályra mutató pointer, amit a fordító automatikusan generál."
         ],
         "key" : [
-            true,
+            false,
             false,
             true,
             true
+        ]
+    },
+    {
+        "question" : "Mi igaz a this pointerre?",
+        "answers" : [
+            "Automatikusan beállítódik.",
+            "Az adott objektum memóriacímét tartalmazza.",
+            "A this az adott objektumot jelenti.",
+            "Statikus metódus nem használhatja.",
+            "Saját metódusa \"definiálhatja\" const-ként."
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
+        "question" : "A this...",
+        "answers" : [
+            "automatikusan beállítódik.",
+            "Egy referencia az osztalyra",
+            "értékét a konstruktorban be kell állítani",
+            "az osztály összes metódusában használhatjuk",
+            "az osztály metódusában const lesz a this"
+        ],
+        "key" : [
+            true,
+            false,
+            false,
+            false,
+            false
         ]
     },
     {
@@ -167,16 +218,16 @@ const questions = [
     {
         "question" : "Melyik tagfügvényből nem lehet több egy osztályban?",
         "answers" : [
-            "Masoló konstruktor",
-            "Értékado operátor",
+            "Másoló konstruktor",
+            "Értékadó operátor",
             "Konverziós operátor",
             "Indexer operátor",
             "Destruktor",
             "Konstruktor"
         ],
         "key" : [
-            false,
-            false,
+            true,
+            true,
             false,
             false,
             true,
@@ -210,6 +261,7 @@ const questions = [
             "Minden kivétel osztálynak az std :: exception-ből kell származnia.",
             "A finally blokk mindig lefut a try blokk elhagyásakor.",
             "A kivételeket mindig referencia szerint kell elkapni.",
+            "A noexcept segitségevel megadhatjuk, hogy egy metódus dobni fog kivételt",
             "A catch( ... ) bármilyen típusú kivételt képes elkapni."
         ],
         "key" : [
@@ -218,6 +270,28 @@ const questions = [
             false,
             false,
             false,
+            false,
+            true
+        ]
+    },
+    {
+        "question" : "Melyik állitás igaz a C++ kivételkezelésre?",
+        "answers" : [
+            "A throw paraméter nélkül a legutóbb elkapott kivételt dobja el.",
+            "\"Bármilyen\" típus teldobhaunk kivételnek.",
+            "Egy kivételt az ősosztály típusa alapján is el lehet kapni",
+            "A finnaly block minden esetben le fog futni.",
+            "Egy elkapott kivetelt a throw; utasítas segítségével eldobhatunk",
+            "Elkaphatjuk érték szerint a kivételt",
+            "A ... minden kivételt képes elkapni."
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
             true
         ]
     },
@@ -241,6 +315,40 @@ const questions = [
         ]
     },
     {
+        "question" : "Melyik állítás igaz a destruktorra?",
+        "answers" : [
+            "Mindig kötelező megvalósítani",
+            "Csak egy lehet belőle az osztályban",
+            "Ha van ősosztály, akkor meg kell hívni az ősosztály destruktorát",
+            "Lehet virtuális",
+            "Nem lehet paramétere",
+            "Ha az osztályban foglalunk dinamikusan memóriát, akkor az mindig itt kell felszabadítani"
+        ],
+        "key" : [
+            false,
+            true,
+            false,
+            true,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz a destruktorra?",
+        "answers" : [
+            "Az objektum megszünésekor automatikusan hívódik.",
+            "A neve megegyezik az osztály nevével.",
+            "Lehet const.",
+            "Adhatunk meg paramétert."
+        ],
+        "key" : [
+            true,
+            false,
+            false,
+            false
+        ]
+    },
+    {
         "question" : "Melyik állitas igaz egy privát adattagra, ha az adott osztalynak nincs friend-je?",
         "answers" : [
             "Nem lesz része a leszármazott osztálynak.",
@@ -257,6 +365,25 @@ const questions = [
             false,
             false,
             false
+        ]
+    },
+    {
+        "question" : "Melyik helyes (szintaktikailag korrekt) elkapása egy kivételnek, ha tudjuk, hogy a Kivetel egy osztaly?",
+        "answers" : [
+            "catch (*) {\n  /*...*/\n}",
+            "catch (k) {\n  /*...*/\n}",
+            "catch (coonst Kivetel k) {\n  /*...*/\n}",
+            "catch (Kivetel k) {\n  /*...*/\n}",
+            "catch (...) {\n  /*...*/\n}",
+            "catch (Kivetel& k) {\n  /*...*/\n}"
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            true,
+            true,
+            true
         ]
     },
     {
@@ -372,14 +499,25 @@ const questions = [
             "Example *e5 = &ee; // ahol ee Example tipus objektum",
             "Example *e2 = new Example;",
             "Example *e1 = new Example[1];",
-            "Example e3();",
-            "catch (const Exception& e) { ... }",
-            "throw Exception();"
+            "Example e3();"
         ],
         "key" : [
             false,
             false,
             true,
+            false
+        ]
+    },
+    {
+        "question" : "Melyik esetben jon letre egy peldany az Example osztalybol (azaz Example tipusu objektum)? (class Example {/* ... */};)",
+        "answers" : [
+            "Example e3();",
+            "Example *e = new Example;",
+            "catch (const Exception& e) { ... }",
+            "throw Exception();"
+        ],
+        "key" : [
+            false,
             false,
             true,
             true
@@ -441,6 +579,21 @@ const questions = [
         ]
     },
     {
+        "question" : "Az alábbi állítások közül melyik igaz a referenciára?",
+        "answers" : [
+            "C++-ban mindig referenciát kell használni pointer helyett.",
+            "Mindenhol használható, ahol a pointer használható.",
+            "Mindig kell kezdőértéket adni.",
+            "Meg lehet változtatni, hogy mire mutasson a referencia."
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            false
+        ]
+    },
+    {
         "question" : "Milyen lesz a láthatósaga annak az adattagnak a leszármazott osztályban, aminek az ősosztályban a láthatósaga protected volt, és az öröklődés private?",
         "answers" : [
             "private",
@@ -456,6 +609,19 @@ const questions = [
         ]
     },
     {
+        "question" : "Milyen lehet a láthatósága annak az adattagnak egy ősosztályban, aminek a láthatósága private a leszármazott osztályban, és az öröklődés láthatósága private?",
+        "answers" : [
+            "public",
+            "protected",
+            "private"
+        ],
+        "key" : [
+            true,
+            true,
+            false
+        ]
+    },
+    {
         "question" : "Milyen feltételeknek kell teljesülnie, hogy egy metódus egyszerre override és final legyen, de ne kapjunk forditási hibát?",
         "answers" : [
             "A metodus nem lehet static",
@@ -465,27 +631,6 @@ const questions = [
             "A metódus felüldefiniál egy örökölt metódust"
         ],
         "key" : [
-            true,
-            false,
-            true,
-            true,
-            true
-        ]
-    },
-    {
-        "question" : "Melyik állitás igaz a C++ kivételkezelésre?",
-        "answers" : [
-            "Mindig referencia szerint kell elkapni a kivételt.",
-            "\"Bármilyen\" típus teldobhaunk kivételnek.",
-            "Egy kivételt az ősosztály típusa alapján is el lehet kapni",
-            "A finnaly block minden esetben le fog futni.",
-            "Egy elkapott kivetelt a throw; utasítas segítségével eldobhatunk",
-            "A catch ( ... ) tetszőleges kivetelt elkap",
-            "A ... minden kivételt képes elkapni."
-        ],
-        "key" : [
-            false,
-            true,
             true,
             false,
             true,
@@ -614,21 +759,6 @@ const questions = [
         ]
     },
     {
-        "question" : "Az alábbi állítások közül melyik igaz a referenciára?",
-        "answers" : [
-            "C++-ban mindig referenciát kell használni pointer helyett.",
-            "Mindenhol használható, ahol a pointer használható.",
-            "Mindig kell kezdőértéket adni.",
-            "Meg lehet változtatni, hogy mire mutasson a referencia."
-        ],
-        "key" : [
-            false,
-            false,
-            true,
-            false
-        ]
-    },
-    {
         "question" : "Hogyan tudok dinamikusan memóriát foglalni C++-ban?",
         "answers" : [
             "A malloc függvény segítségével.",
@@ -656,36 +786,6 @@ const questions = [
             true,
             true,
             true
-        ]
-    },
-    {
-        "question" : "Melyik állítás igaz a konstruktor inicializáló listára?",
-        "answers" : [
-            "Számít, hogy milyen sorrendben inicializáljuk a változókat.",
-            "Referencia adattagokat inicializálhatunk itt.",
-            "A constans adattagoknak csak ott adhatunk értéket.",
-            "Kötelező ott inicializálni az adattagokat."
-        ],
-        "key" : [
-            false,
-            true,
-            false,
-            false
-        ]
-    },
-    {
-        "question" : "Melyik állítás igaz a konstruktor inicializáló listára?",
-        "answers" : [
-            "Olyan adattagokat itt kell inicializalni, amelyeknek nincs default konstruktora",
-            "Referenciat itt inicializalhatom, a konstruktor torzseben nem",
-            "Konstans adattagnak adthatunk értéket",
-            "A használata kötelező"
-        ],
-        "key" : [
-            true,
-            true,
-            true,
-            false
         ]
     },
     {
@@ -734,25 +834,6 @@ const questions = [
         ]
     },
     {
-        "question" : "Melyik állítás igaz a destruktorra?",
-        "answers" : [
-            "Mindig kötelező megvalósítani",
-            "Csak egy lehet belőle az osztályban",
-            "Ha van ősosztály, akkor meg kell hívni az ősosztály destruktorát",
-            "Lehet virtuális",
-            "Nem lehet paramétere",
-            "Ha az osztályban foglalunk dinamikusan memóriát, akkor az mindig itt kell felszabadítani"
-        ],
-        "key" : [
-            false,
-            true,
-            false,
-            true,
-            true,
-            false
-        ]
-    },
-    {
         "question" : "Mi szükséges ahhoz, hogy egy ősztályban lévő foo metódust felüldefiniáljunk egy leszármazott osztályban?",
         "answers" : [
             "A foo az ősosztályban virtuális legyen",
@@ -778,6 +859,23 @@ const questions = [
         "key" : [
             false,
             false,
+            false,
+            true
+        ]
+    },
+    {
+        "question" : "Melyik allitas igaz a + operator kiterjesztesre?",
+        "answers" : [
+            "Lehetséges, hogy mindkét paramétere int legyen",
+            "Lehet const",
+            "Megvalósíthatjuk globális paraméterként",
+            "Lehet void a visszateres típusa",
+            "1 vagy 2 paramétere lehet"
+        ],
+        "key" : [
+            false,
+            true,
+            true,
             false,
             true
         ]
@@ -847,6 +945,23 @@ const questions = [
         ]
     },
     {
+        "question" : "Mit jelent a final?",
+        "answers" : [
+            "Ha egy metódus final, akkor azt példányosítás nélkül  is meg lehet hívni",
+            "Ha egy osztály final, akkor abból nem lehet származtatni",
+            "Ha egy osztály final, akkor azt nem lehet példányosítani",
+            "Ha egy adattag final, akkor annak nem lehet megváltoztatni az értékét",
+            "Ha egy operator final, akkor azt nem lehet felüldefiniálni a leszármaztatott osztályban"
+        ],
+        "key" : [
+            false,
+            true,
+            false,
+            false,
+            true
+        ]
+    },
+    {
         "question" : "Melyik állítás igaz a konstruktorra?",
         "answers" : [
             "Ha van ősosztály, akkor minden esetben expliciten meg kell hívni az ősosztály konstruktorát a leszármazott osztály konstruktorából",
@@ -859,6 +974,68 @@ const questions = [
             true,
             false,
             true
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz a konstruktorra?",
+        "answers" : [
+            "Ha az osztálynak van const adattagja",
+            "Ha az osztálynak van referencia adattagja",
+            "Ha az osztálynak van olyan adattagja, aminek nincs default inicializalasa ",
+            "Az osztálynak van olyan ősosztálya, amelyiknek nincs default konstruktora"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz a konstruktor inicializáló listára?",
+        "answers" : [
+            "Számít, hogy milyen sorrendben inicializáljuk a változókat.",
+            "Referencia adattagokat inicializálhatunk itt.",
+            "A constans adattagoknak csak ott adhatunk értéket.",
+            "Kötelező ott inicializálni az adattagokat."
+        ],
+        "key" : [
+            false,
+            true,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz a konstruktor inicializáló listára?",
+        "answers" : [
+            "Olyan adattagokat itt kell inicializalni, amelyeknek nincs default konstruktora",
+            "Referenciat itt inicializalhatom, a konstruktor torzseben nem",
+            "Konstans adattagnak adthatunk értéket",
+            "A használata kötelező"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz a konstruktor inicializáló listára?",
+        "answers" : [
+            "A konstruktor törzsében mindent meg tudunk csinálni, amit a konstruktor inicializáló listában",
+            "Konstans adattagoknak itt adhatunk kezdőértéket",
+            "Ha van ősosztály akkor itt meg kell hívni az ősosztály megfelelo konstruktorát",
+            "Használata kötelező",
+            "Program futtatásának eredményét nem befolyásolja, hogy milyen sorrendben inicializáljuk, itt az adattagokat"
+        ],
+        "key" : [
+            false,
+            true,
+            false,
+            false,
+            false
         ]
     },
     {
@@ -896,6 +1073,55 @@ const questions = [
         ]
     },
     {
+        "question" : "Melyik allítas igaz a friend fuggvényre?",
+        "answers" : [
+            "Hozzáfér a protected adattagohoz",
+            "Egy függvény több osztálynak is a friend-je lehet",
+            "Az osztály példányosítása nélkül is hívható",
+            "Akármennyi paramétere lehet"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
+        "question" : "Ha a foo az A osztály friend függvénye, akkor…",
+        "answers" : [
+            "nem lehet másik friend függvény az A osztályban",
+            "az A osztály metódusa",
+            "hozzáfér az A publikus adattagjaihoz",
+            "a foo lehet const",
+            "kötelező implementalni, nem elég a deklaráció"
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            false,
+            true
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz, ha az F osztály friendje C osztálynak?",
+        "answers" : [
+            "A C osztály hozzáfér az F protected metódusaihoz",
+            "Egy osztály nem lehet friend, csak final",
+            "Az F osztály öröklődhet a C osztálybol",
+            "Az F osztály hozzáfér a C protected adattagjaihoz",
+            "A C osztály öröklődhet F osztálybol"
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            true,
+            true
+        ]
+    },
+    {
         "question" : "Mi szükséges ahhoz, hogy ne kapjuk fordítási hibát akkor, ha egy Pelda osztályban lévő foo metódusra alkalmazzuk az override jelzőt?",
         "answers" : [
             "A Pelda osztálynak publikusan kell származnia az ősosztályból",
@@ -908,19 +1134,6 @@ const questions = [
             false,
             true,
             true
-        ]
-    },
-    {
-        "question" : "Milyen lehet a láthatósága annak az adattagnak egy ősosztályban, aminek a láthatósága private a leszármazott osztályban, és az öröklődés láthatósága private?",
-        "answers" : [
-            "public",
-            "protected",
-            "private"
-        ],
-        "key" : [
-            true,
-            true,
-            false
         ]
     },
     {
@@ -1011,22 +1224,7 @@ const questions = [
         ]
     },
     {
-        "question" : "Melyik allítas igaz a friend fuggvényre?",
-        "answers" : [
-            "Hozzáfér a protected adattagohoz",
-            "Egy függvény több osztálynak is a friend-je lehet",
-            "Az osztály példányosítása nélkül is hívható",
-            "Akármennyi paramétere lehet"
-        ],
-        "key" : [
-            true,
-            true,
-            true,
-            true
-        ]
-    },
-    {
-        "question" : "Melyik állítás igaz az std vector-ra?",
+        "question" : "Melyik állítás igaz az std::vector-ra?",
         "answers" : [
             "Megadhatjuk, hogy milyen elemeket szeretnénk tárolni",
             "Az indexer operátor segítségével elérjük az i-edik elemet",
@@ -1045,17 +1243,34 @@ const questions = [
         ]
     },
     {
-        "question" : "Melyik állítás igaz a destruktorra?",
+        "question" : "Melyik állítás igaz az std::vector-ra?",
         "answers" : [
-            "Az objektum megszünésekor automatikusan hívódik.",
-            "A neve megegyezik az osztály nevével.",
-            "Lehet const.",
-            "Adhatunk meg paramétert."
+            "Nem kell megadni elore, hogy hány elemet akarunk tárolni",
+            "Tetszőleges helyre beszúrhatunk új elemet",
+            "Csak az utolsó elemet lehet törölni",
+            "Csak olyan elemeket kepes tárolni, amelyekre meg van valósitva az < operátor"
+        ],
+        "key" : [
+            true,
+            true,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Az alábbiak közül melyik igaz az std::set-re?",
+        "answers" : [
+            "Az elemeket rendezetten tárolja",
+            "Az új elemet a vegere szúrja be",
+            "Csak olyan elemeket kepes tarolni, amelyekre meg van valositva az == operator",
+            "mindig az első elem a legkisebb",
+            "Van indexer operátora"
         ],
         "key" : [
             true,
             false,
             false,
+            true,
             false
         ]
     },
@@ -1221,40 +1436,6 @@ const questions = [
         ]
     },
     {
-        "question" : "Mi igaz a this pointerre?",
-        "answers" : [
-            "Automatikusan beállítódik.",
-            "Az adott objektum memóriacímét tartalmazza.",
-            "A this az adott objektumot jelenti.",
-            "Statikus metódus nem használhatja.",
-            "Saját metódusa \"definiálhatja\" const-ként."
-        ],
-        "key" : [
-            true,
-            true,
-            true,
-            true,
-            true
-        ]
-    },
-    {
-        "question" : "Az alábbiak közül melyik nem specifikált viselkedés?",
-        "answers" : [
-            "Nem inicializált változó használata.",
-            "Függvényhívás esetén a paraméterlista kiértékelési sorrendje.",
-            "Hnullptr dereferencia.",
-            "Tömb túlindexelés.",
-            "return 0; elhagyása a main függvényból."
-        ],
-        "key" : [
-            true,
-            false,
-            true,
-            true,
-            false
-        ]
-    },
-    {
         "question" : "Melyik állitás igaz az operator overloading ra?",
         "answers" : [
             "HOA saját osztálykhoz definiálhatunk saját new operátort.",
@@ -1280,6 +1461,23 @@ const questions = [
             "Csak az adott osztály fér hozzá.",
             "A konstruktor a Singleton minta esetén public láthatóságú.",
             "A destruktor mindig public láthatóságú."
+        ],
+        "key" : [
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Melyik állitás igaz egy public adattagra?",
+        "answers" : [
+            "Publikus adattag nem lehet const",
+            "Az adattagok nem lehetnek publikusak",
+            "Publikus adattag nem lehet static",
+            "Publikus adattag mindig automatikusan inicializálódik",
+            "Ha egy adattag publikus, akkor az összes leszármazott osztályban is publikus lesz"
         ],
         "key" : [
             false,
@@ -1329,14 +1527,27 @@ const questions = [
             "Minden ős esetén definiálhatjuk a láthatóságot.",
             "Lehet két azonos nevű közvetlen öse az osztálynak.",
             "Származtathatunk az std::vector osztályból.",
-            "Csak egy valódi őse lehet az osztálynak, a többi ősnek absztrakt osztálynak kell lennie.",
-            "Ha van virtuális metódus az ósosztályban, akkor az öröklődésnek virtuálisnak kell lennie."
+            "Csak egy valódi őse lehet az osztálynak, a többi ősnek absztrakt osztálynak kell lennie."
         ],
         "key" : [
             true,
             false,
             false,
+            false
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz többszörös öröklődés esetén?",
+        "answers" : [
+            "Egy osztály többször is szerepelhet a közvetlen ősök között",
+            "Számít, hogy milyen sorrendben adjuk meg az osztályokat",
+            "Megadhatjuk, hogy melyik öröklődés legyen virtuális",
+            "Ha van virtuális metódus az ósosztályban, akkor az öröklődésnek virtuálisnak kell lennie."
+        ],
+        "key" : [
             false,
+            true,
+            true,
             false
         ]
     },
@@ -1352,7 +1563,7 @@ const questions = [
         "key" : [
             false,
             true,
-            false,
+            true,
             false,
             false
         ]
@@ -1385,7 +1596,7 @@ const questions = [
         ],
         "key" : [
             false,
-            true,
+            false,
             false,
             true,
             false
@@ -1435,10 +1646,10 @@ const questions = [
             "Ha nem adunk meg értéket, akkor alapértelmezett értéket akpnak."
         ],
         "key" : [
-            false,
+            true,
             false,
             true,
-            true,
+            false,
             false
         ]
     },
@@ -1460,25 +1671,6 @@ const questions = [
         ]
     },
     {
-        "question" : "Melyik állítás įgaz a destruktorra?",
-        "answers" : [
-            "Csak egy lehet belőle az osztályban",
-            "Mindig kötelező megvalósítani",
-            "Lehet virtuális",
-            "Ha van ősosztály, akkor meg kell hívni az ősosztály destruktorát",
-            "Nem lehet paramétere",
-            "Ha az osztályban foglalunk dinamikusan memóriát, akkor az mindig itt kell felszabadítani"
-        ],
-        "key" : [
-            true,
-            false,
-            true,
-            false,
-            true,
-            false
-        ]
-    },
-    {
         "question" : "Melyik nem definiált (undefined behaviour) viselkedés C++-ban?",
         "answers" : [
             "Olyan tagfüggvény meghívása, amelyik nincs implementálva",
@@ -1495,6 +1687,38 @@ const questions = [
             false,
             true,
             true
+        ]
+    },
+    {
+        "question" : "Az alábbiak közül melyik nem specifikált viselkedés?",
+        "answers" : [
+            "Nem inicializált változó használata.",
+            "Függvényhívás esetén a paraméterlista kiértékelési sorrendje.",
+            "nullptr dereferencia.",
+            "Tömb túlindexelés.",
+            "return 0; elhagyása a main függvényból."
+        ],
+        "key" : [
+            false,
+            true,
+            false,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Mit jelent az C++ szerint, hogy egy viselkedes nem definialt (unspecified behavior)?",
+        "answers" : [
+            "A program viselkedese nem definialt, barmilyen output vagy viselkedes szabvany szerint elfogadott kiemente a programnak.",
+            "A szabvany nem specifikalja pontosan, de a C++ fordíto dokumentálja az adott viselkedést.",
+            "Azt jelenti, hogy a függvényhívásnál a paraméterek sorrendjének kiértékelése nem definiált.",
+            "Azt jelenti, hogy a size_t merete nem definiált, ez architektúra függő."
+        ],
+        "key" : [
+            false,
+            false,
+            false,
+            false
         ]
     },
     {
@@ -1553,6 +1777,44 @@ const questions = [
         ]
     },
     {
+        "question" : "Mi igaz az implicit típuskonverzióra?",
+        "answers" : [
+            "Elvégezheti az alapértelmezett típus-promóciót, mint például short típusról int-re.",
+            "Például egy int változót double típusra konvertál.",
+            "Nem igényel explicit utasítást a programozótól.",
+            "Automatikusan vegrehajtódik kompatibilis típusok között.",
+            "Csak osztályok esetében használható.",
+            "Kockázatot jelenthet, ha értékvesztéssel jár (pl. double-ról int-re konvertálunk).",
+            "Mindig garantalja, hogy az ertekek pontosan megmaradnak."
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "Mi igaz az implicit típuskonverzióra?",
+        "answers" : [
+            "Egynél több konverziós operátora is lehet egy osztálynak",
+            "Egész számok között automatikusan végrehajtódik",
+            "Az egyparametéres konstruktor valósítja meg az implicit konverziót",
+            "Megvalósíthatunk olyan operátort, amivel az osztályunk automatikusan konvertálódik",
+            "Automatikusan végrehajtódik"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
         "question" : "Milyen esetekben használhatjuk a const_cast operátort?",
         "answers" : [
             "Használható érték típusok, például int esetén.",
@@ -1582,27 +1844,6 @@ const questions = [
             false,
             true,
             true
-        ]
-    },
-    {
-        "question" : "Mi igaz az implicit típuskonverzióra?",
-        "answers" : [
-            "Elvégezheti az alapértelmezett típus-promóciót, mint például short típusról int-re.",
-            "Például egy int változót double típusra konvertál.",
-            "Nem igényel explicit utasítást a programozótól.",
-            "Automatikusan vegrehajtódik kompatibilis típusok között.",
-            "Csak osztályok esetében használható.",
-            "Kockázatot jelenthet, ha értékvesztéssel jár (pl. double-ról int-re konvertálunk).",
-            "Mindig garantalja, hogy az ertekek pontosan megmaradnak."
-        ],
-        "key" : [
-            true,
-            true,
-            true,
-            true,
-            false,
-            true,
-            false
         ]
     },
     {
@@ -1836,6 +2077,23 @@ const questions = [
         ]
     },
     {
+        "question" : "Melyik állítás igaz a névterekre?",
+        "answers" : [
+            "A package kulcsszóval kell létrehozni",
+            "Egy fájlon belül is többször szerepelhet, pl. namespace macska {/*…*/} namespace macska {/*…*/}",
+            "Egymásba ágyazhatók nevtereket",
+            "Ugyanaz a névtér több fájlban is elofordulhat",
+            "Megtehetjük hogy nem adunk neki nevet, pl. namespace {/*…*/}"
+        ],
+        "key" : [
+            false,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
         "question" : "Mikor használjunk névtereket C++-ban?",
         "answers" : [
             "Ha különböző projektekben azonos nevű entitásokat használunk.",
@@ -1854,6 +2112,23 @@ const questions = [
             true,
             false,
             true,
+            true,
+            true
+        ]
+    },
+    {
+        "question" : "Melyik névtér megadás helyes?",
+        "answers" : [
+            "namespace std;",
+            "namespace std {}",
+            "namespace Allat.Emlos {}",
+            "namespace {}",
+            "namespace Allat::Emlos {}"
+        ],
+        "key" : [
+            false,
+            true,
+            false,
             true,
             true
         ]
@@ -1910,6 +2185,23 @@ const questions = [
         ]
     },
     {
+        "question" : "Melyik állítás igaz C++-ban a struct-ra?",
+        "answers" : [
+            "Öröklődhet egy másik osztályból(class)",
+            "Lehet virtuális metódusa",
+            "Belerakhatjuk egy vector tárolóba",
+            "Lehet statikus metódusa",
+            "Lehet destruktora"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
         "question" : "Mi a különbség a struct és a class között C++-ban?",
         "answers" : [
             "A class objektumorientalt programozásban használható, a struct nem",
@@ -1923,23 +2215,6 @@ const questions = [
             true,
             false,
             false,
-            false
-        ]
-    },
-    {
-        "question" : "Melyik állítás igaz egy osztály deklarációra vagy definícióra?",
-        "answers" : [
-            "Az osztály deklarációja csak azt mondja meg, hogy az osztály létezik.",
-            "Egy osztályhoz több definíció is létezhet.",
-            "Az osztály deklarációja lehetővé teszi pointerek és referenciák használatát.",
-            "Egy osztalyhoz tobb deklaracio is letezhet.",
-            "Egy definiált osztályt mindig lehet példányosítani."
-        ],
-        "key" : [
-            true,
-            false,
-            true,
-            true,
             false
         ]
     },
@@ -1958,6 +2233,23 @@ const questions = [
             false,
             true,
             true
+        ]
+    },
+    {
+        "question" : "Melyik állítás igaz egy osztály deklarációra vagy definícióra?",
+        "answers" : [
+            "Az osztály deklarációja csak azt mondja meg, hogy az osztály létezik.",
+            "Egy osztályhoz több definíció is létezhet.",
+            "Az osztály deklarációja lehetővé teszi pointerek és referenciák használatát.",
+            "Egy osztalyhoz tobb deklaracio is letezhet.",
+            "Egy definiált osztályt mindig lehet példányosítani."
+        ],
+        "key" : [
+            true,
+            false,
+            true,
+            true,
+            false
         ]
     },
     {
@@ -2089,6 +2381,23 @@ const questions = [
         ]
     },
     {
+        "question" : "Mi az előnye az override használatanak?",
+        "answers" : [
+            "Csak Javaban van override, C++ban nincs",
+            "A preprocesszor észreveszi, ha nincs felüldefiniálás es fordítási hibát kapunk",
+            "A kódból egyértelműen látszik, hogy az adott metódus felüldefiniál egy örökölt metódust",
+            "Fordítási időben megtudjuk, ha az adott metódus nem definiál felül semmit",
+            "Semmi előnye nincs"
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            true,
+            false
+        ]
+    },
+    {
         "question" : "Mire jó az override a metódus esetében?",
         "answers" : [
             "Csak Javaban van Override, es ott nagy kezdőbetűvel kell írni",
@@ -2100,21 +2409,6 @@ const questions = [
             false,
             false,
             true,
-            false
-        ]
-    },
-    {
-        "question" : "Mit jelent az C++ szerint, hogy egy viselkedes nem definialt (unspecified behavior)?",
-        "answers" : [
-            "A program viselkedese nem definialt, barmilyen output vagy viselkedes szabvany szerint elfogadott kiemente a programnak.",
-            "A szabvany nem specifikalja pontosan, de a C++ fordíto dokumentálja az adott viselkedést.",
-            "Azt jelenti, hogy a függvényhívásnál a paraméterek sorrendjének kiértékelése nem definiált.",
-            "Azt jelenti, hogy a size_t merete nem definiált, ez architektúra függő."
-        ],
-        "key" : [
-            false,
-            false,
-            false,
             false
         ]
     },
@@ -2288,7 +2582,7 @@ const questions = [
         ]
     },
     {
-        "question" : "Hogyan befolyásolja az orökldes lathatósaga a tagok elerését?",
+        "question" : "Hogyan befolyásolja az örökldes láthatósaga a tagok elerését?",
         "answers" : [
             "Publikus öröklődés esetén az ősosztály privát tagjai privátok maradnak.",
             "A privát tagok protecteddé válnak protected öröklődés esetén.",
@@ -2303,7 +2597,7 @@ const questions = [
         ]
     },
     {
-        "question" : "Hogyan befolyásolja az orökldes lathatósaga a tagok elerését?",
+        "question" : "Hogyan befolyásolja az örökldes láthatósaga a tagok elerését?",
         "answers" : [
             "Publikus oröklődés esetén az ősosztály publikus tagjai publikusak maradnak.",
             "A láthatóság csak az ősosztályból származtatott hozzáférést érinti.",
@@ -2361,6 +2655,23 @@ const questions = [
         ]
     },
     {
+        "question" : "Milyen feltételek szükségesek a polimorfizmushoz C++-ban?",
+        "answers" : [
+            "Felüldefiniálás",
+            "Virtuális metódus",
+            "Öröklődés",
+            "Dinamikusan létrehozott objektum",
+            "Referencia vagy pointer paraméter"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            false,
+            true
+        ]
+    },
+    {
         "question" : "Miért érdemes pointereket tárolni a polimorfikus objektumokhoz?",
         "answers" : [
             "Az ősosztály pointere elérheti a leszármazott osztály metódusait",
@@ -2372,6 +2683,170 @@ const questions = [
             true,
             false,
             true,
+            false
+        ]
+    },
+    {
+        "question" : "Mi történik, ha a delete helyett delete[-t használunk egy egyszeres new memóriára?",
+        "answers" : [
+            "Az delete[] mindig biztonságosan működik, függetlenül a foglalástól.",
+            "A program futása közben váratlan hibák léphetnek fel.",
+            "Az delete[ ugyanaz, mint a sima delete.",
+            "Az operator delete[] meghívódik, ami nem megfelelő az egyszeres foglalásra."
+        ],
+        "key" : [
+            false,
+            true,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Hogyan működik a láthatóság az oröklődés során?",
+        "answers" : [
+            "Ha nem akarjuk megváltoztatni a láthatóságokat, akkor nem kell kiírni a láthatóságát az öröklődésnek.",
+            "A public öröklődés megtartja az eredeti tagok láthatóságát.",
+            "A protected öröklődésnél a public tagok láthatósága protected lesz.",
+            "A private öröklődésnél minden örökölt tag private láthatóságúvá válik."
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "Mi az absztrakt osztály és mi igaz rájuk?",
+        "answers" : [
+            "Az absztrakt asztály alyan osztály, amelynek legalább egy tisztán virtuális metódusa van.",
+            "Absztrakt osztályokat nem lehet példányosítani, csak ärökölni belőlük.",
+            "Egy osztály akkor absztrakt, ha egy interfészből származik, és nem valósítottam meg az összes metódusát.",
+            "Az absztrakt asztályok elő ki kell írni az abstract mádosítát."
+        ],
+        "key" : [
+            true,
+            true,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Ha az s1 es az s2 std::string tipusúak, akkor melyik helyes kiíratás C++ban?",
+        "answers" : [
+            "cout<<(s1+\" \")<<s2<<endl;",
+            "cout<<s1<<\'\'<<s2<<endl;",
+            "cout<<s1<<\" \"<<s2;",
+            "cout<<s1<<endl;cout<<s2<<endl;",
+            "cout<<(s1+\" \"+s2)<<endl;"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
+        "question" : "Egy osztálynak hány közvetlen ősosztálya lehet C++ban?",
+        "answers" : [
+            "0",
+            "2",
+            "3",
+            "4",
+            "1"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    {
+        "question" : "Melyik lehet virtuális egy ősosztályban?",
+        "answers" : [
+            "Statikus metódus",
+            "Friend függvény",
+            "Destruktor",
+            "Másoló konstruktor",
+            "Értékadó operátor",
+        ],
+        "key" : [
+            false,
+            false,
+            true,
+            false,
+            false
+        ]
+    },
+    {
+        "question" : "Mi a verem (stack) előnye a kupaccal (heap) szemben?",
+        "answers" : [
+            "Nem nekünk kell felszabadítani az objektumokat",
+            "Automatikusan létrejönnek az objektumok",
+            "Hosszú élettartamú objektumokat lehet létrehozni a verem segítségével",
+            "Gyorsabb",
+            "Kupac csak Javaban van"
+        ],
+        "key" : [
+            true,
+            true,
+            false,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "Ha az A  ősosztályban is van egy l adattag, és a B leszármazott osztályban is található egy l adattag, akkor hogyan hivatkozunk az A ősosztály adattagjára a leszármazott osztályban?(feltehetjük, hogy elérhető)",
+        "answers" : [
+            "this.A::l",
+            "this->l",
+            "l",
+            "A::l",
+            "A->l"
+        ],
+        "key" : [
+            true,
+            false,
+            false,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "Ha az A ősosztályban van egy publikus foo metódus, és a B osztály öröklődik A-ból, de az öröklődés láthatóságát nem ismerjük, akkor milyen lehet a foo láthatósága a B osztályban?",
+        "answers" : [
+            "Része lesz, de nem lesz elérhető",
+            "public",
+            "protected",
+            "private",
+            "lesz olyan eset, amikor nem örökli meg a foot"
+        ],
+        "key" : [
+            true,
+            true,
+            true,
+            true,
+            false
+        ]
+    },
+    {
+        "question" : "A globális objektumok…",
+        "answers" : [
+            "peldányosításanak sorrendje tetszőleges lehet.",
+            "esetében a nem const objektumok inicializálva lesznek akkor is, ha nem adnak meg megfelelő értéket",
+            "a program indulásakor létrejönnek",
+            "közül a const objektumoknak csak default értéket lehet adni",
+            "közül a már nem használtakat futás közben törölni lehet"
+        ],
+        "key" : [
+            true,
+            false,
+            true,
+            false,
             false
         ]
     }
